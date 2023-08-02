@@ -49,7 +49,7 @@ metadata/_edit_vertical_guides_ = [640.0]
 [node name="player" type="CharacterBody3D" parent="."]
 script = ExtResource("1_3r68m")
 speed = 3.0
-camera_sens = 3.0
+camera_sens = 0.8
 
 [node name="CShape" type="CollisionShape3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)

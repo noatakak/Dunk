@@ -27,8 +27,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		look_dir = event.relative * 0.001
 		if mouse_captured: _rotate_camera()
 	if Input.is_action_just_pressed("pause"):
-		$Camera/RayCast3D/prompt.visible = false
-		get_tree().paused = true
+		#$Camera/RayCast3D/prompt.visible = false
+		#get_tree().paused = true
 		#PauseMenu.fullscreen = Game.fullscreen
 		#PauseMenu.volume = Game.volume_level
 		#PauseMenu.show()
