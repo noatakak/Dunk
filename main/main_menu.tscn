@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://wyidl48jlu01"]
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 64.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 10
+text = "Depths?"
+horizontal_alignment = 1
+vertical_alignment = 1
