@@ -1,3 +1,36 @@
-[gd_scene format=3 uid="uid://bw0ia5unrd6rd"]
+[gd_scene load_steps=7 format=3 uid="uid://bw0ia5unrd6rd"]
+
+[ext_resource type="PackedScene" uid="uid://cewatq04a6ck6" path="res://nodes/noatak/player.tscn" id="1_lucho"]
+[ext_resource type="Texture2D" uid="uid://k8ij7nlt0heo" path="res://assets/test/floor tile maze 1.png" id="2_1uwrb"]
+[ext_resource type="Texture2D" uid="uid://daxvb6s41hy17" path="res://assets/ui/viewtes64x64t.png" id="3_srh5a"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u7t02"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oybml"]
+size = Vector3(21.3493, 1, 22.071)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_efvyh"]
 
 [node name="test" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_lucho")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.770598, 0)
+physics_material_override = SubResource("PhysicsMaterial_u7t02")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.402346)
+shape = SubResource("BoxShape3D_oybml")
+
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D"]
+transform = Transform3D(7.415, 0, 0, 0, -3.2412e-07, 7.415, 0, -7.415, -3.2412e-07, 0, 0.695, 0)
+modulate = Color(0.129412, 0.129412, 0.129412, 1)
+texture = ExtResource("2_1uwrb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("ArrayMesh_efvyh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("3_srh5a")

@@ -1,11 +1,18 @@
-[gd_scene format=3 uid="uid://wyidl48jlu01"]
+[gd_scene load_steps=2 format=3 uid="uid://wyidl48jlu01"]
+
+[ext_resource type="Texture2D" uid="uid://daxvb6s41hy17" path="res://assets/ui/viewtes64x64t.png" id="1_kxulj"]
 
 [node name="Main Menu" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
 offset_right = 64.0
 offset_bottom = 23.0
-theme_override_font_sizes/font_size = 10
-text = "Depths?"
+theme_override_font_sizes/font_size = 5
+text = "Dunk"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 32)
+texture = ExtResource("1_kxulj")
