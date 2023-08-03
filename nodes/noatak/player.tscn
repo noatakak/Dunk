@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cewatq04a6ck6"]
+[gd_scene load_steps=9 format=3 uid="uid://cewatq04a6ck6"]
 
 [ext_resource type="Script" path="res://nodes/noatak/CharacterController.gd" id="1_3r68m"]
+[ext_resource type="Script" path="res://nodes/noatak/RayCast3D.gd" id="2_v6wi0"]
+[ext_resource type="Texture2D" uid="uid://daxvb6s41hy17" path="res://assets/ui/viewtes64x64t.png" id="3_0k7nf"]
+[ext_resource type="FontFile" uid="uid://cuqw7vixr7shr" path="res://assets/font/TeenyTinyPixls-o2zo.ttf" id="4_l0lq8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h5er6"]
 size = Vector3(0.503485, 1, 0.503671)
@@ -22,7 +25,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_cdftj"]
 resource_name = "headbob"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -30,10 +32,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.400381, 0.8),
+"times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.6, 0), Vector3(0, 0.7, 0), Vector3(0, 0.6, 0)]
+"values": [Vector3(0, 0.7, 0), Vector3(0, 1.1, 0), Vector3(0, 0.7, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rljyf"]
@@ -48,8 +50,8 @@ metadata/_edit_vertical_guides_ = [640.0]
 
 [node name="player" type="CharacterBody3D" parent="."]
 script = ExtResource("1_3r68m")
-speed = 3.0
-camera_sens = 0.8
+speed = 4.0
+camera_sens = 4.0
 
 [node name="CShape" type="CollisionShape3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
@@ -62,3 +64,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 libraries = {
 "": SubResource("AnimationLibrary_rljyf")
 }
+
+[node name="RayCast3D" type="RayCast3D" parent="player/Camera"]
+target_position = Vector3(0, 0, -1.5)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("2_v6wi0")
+
+[node name="prompt" type="Node2D" parent="player/Camera/RayCast3D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="player/Camera/RayCast3D/prompt"]
+position = Vector2(640, 625)
+scale = Vector2(3.58333, 1.12162)
+texture = ExtResource("3_0k7nf")
+
+[node name="Label" type="Label" parent="player/Camera/RayCast3D/prompt"]
+offset_left = 390.0
+offset_top = 596.0
+offset_right = 890.0
+offset_bottom = 649.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_l0lq8")
+theme_override_font_sizes/font_size = 50
+text = "press 'space' to interact"
+horizontal_alignment = 1
+vertical_alignment = 1

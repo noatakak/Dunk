@@ -33,6 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		#PauseMenu.volume = Game.volume_level
 		#PauseMenu.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().change_scene_to_file("res://main/main_menu.tscn")
 
 func _physics_process(delta: float) -> void:
 	if mouse_captured: _handle_joypad_camera_rotation(delta)

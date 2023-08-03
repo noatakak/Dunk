@@ -23,7 +23,6 @@ boot_splash/minimum_display_time=2000
 
 window/size/viewport_width=64
 window/size/viewport_height=64
-window/size/mode=3
 window/size/window_width_override=900
 window/size/window_height_override=900
 window/stretch/mode="viewport"
@@ -92,4 +91,3 @@ look_right={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
