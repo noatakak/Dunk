@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d2i2n5yfx1fkv"
+path="res://.godot/imported/newairtank.obj-89903d8d388e553c60afa51ae44f17d6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/newairtank.obj-89903d8d388e553c60afa51ae44f17d6.mesh"]
+
+source_file="res://assets/models/air_tank/newairtank.obj"
+dest_files=["res://.godot/imported/newairtank.obj-89903d8d388e553c60afa51ae44f17d6.mesh", "res://.godot/imported/newairtank.obj-89903d8d388e553c60afa51ae44f17d6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
