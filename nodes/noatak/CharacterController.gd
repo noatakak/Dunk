@@ -3,6 +3,8 @@ class_name Player extends CharacterBody3D
 @export_category("Player")
 @export_range(1, 35, 1) var speed: float = 10 # m/s
 @export_range(10, 400, 1) var acceleration: float = 100 # m/s^2
+
+@export_range(0.1, 3.0, 0.1) var jump_height: float = 1 # m
 @export_range(0.1, 3.0, 0.1, "or_greater") var camera_sens: float = 1
 
 var jumping: bool = false
@@ -15,6 +17,7 @@ var look_dir: Vector2 # Input direction for look/aim
 
 var walk_vel: Vector3 # Walking velocity 
 var grav_vel: Vector3 # Gravity velocity 
+var jump_vel: Vector3 # Jumping velocity
 
 @onready var camera: Camera3D = $Camera
 @onready var anim = $"Camera/AnimationPlayer"
@@ -34,11 +37,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		#PauseMenu.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().change_scene_to_file("res://main/main_menu.tscn")
+	if Input.is_action_just_pressed("jump"): 
+		jumping = true
+		anim.stop()
 
 func _physics_process(delta: float) -> void:
 	if mouse_captured: _handle_joypad_camera_rotation(delta)
-	velocity = _walk(delta) + _gravity(delta)
-	if velocity != Vector3():
+	velocity = _walk(delta) + _gravity(delta) + _jump(delta)
+	if is_on_floor() && velocity != Vector3():
 		anim.play("headbob")
 	move_and_slide()
 
@@ -69,5 +75,13 @@ func _walk(delta: float) -> Vector3:
 	return walk_vel
 
 func _gravity(delta: float) -> Vector3:
-	grav_vel = Vector3.ZERO if is_on_floor() else grav_vel.move_toward(Vector3(0, velocity.y - gravity, 0), gravity * delta)
+	grav_vel = Vector3.ZERO if is_on_floor() else grav_vel.move_toward(Vector3(0, velocity.y - gravity, 0), delta)
 	return grav_vel
+	
+func _jump(delta: float) -> Vector3:
+	if jumping:
+		if is_on_floor(): jump_vel = Vector3(0, sqrt(4 * jump_height * gravity), 0)
+		jumping = false
+		return jump_vel
+	jump_vel = Vector3.ZERO if is_on_floor() else jump_vel.move_toward(Vector3.ZERO, gravity/4 * delta)
+	return jump_vel

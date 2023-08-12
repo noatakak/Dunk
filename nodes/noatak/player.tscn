@@ -51,6 +51,7 @@ metadata/_edit_vertical_guides_ = [640.0]
 [node name="player" type="CharacterBody3D" parent="."]
 script = ExtResource("1_3r68m")
 speed = 4.0
+jump_height = 0.2
 camera_sens = 4.0
 
 [node name="CShape" type="CollisionShape3D" parent="player"]
