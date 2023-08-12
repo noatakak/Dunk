@@ -5,6 +5,6 @@ extends Node
 func _ready():
 	pass # Replace with function body.
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_flashlight"):
 		flashlight.visible = !flashlight.visible

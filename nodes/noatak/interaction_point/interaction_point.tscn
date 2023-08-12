@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtotbgo5f4ql8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k147h"]
+radius = 1.0
+
+[node name="InteractionPoint" type="Area3D"]
+metadata/dialog_id = ""
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_k147h")
