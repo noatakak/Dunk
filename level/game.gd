@@ -48,6 +48,7 @@ func update_air(delta):
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("toggle_flashlight"):
 		if battery_level > 0:
+			$"audio_manager/light_switch".play()
 			flashlight.visible = !flashlight.visible
 		elif battery_level <= 0:
 			playing_power_anim = true

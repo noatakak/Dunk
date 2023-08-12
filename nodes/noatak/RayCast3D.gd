@@ -16,6 +16,7 @@ func _process(_delta):
 			$prompt.visible = false
 			if coll.has_meta("type"):
 				if coll.get_meta("type") == "air":
+					coll.get_parent().get_parent().get_parent().get_node("audio_manager/air_refill").play()
 					coll.get_parent().get_parent().get_parent().o2_level += 50
 				if coll.get_meta("type") == "power":
 					coll.get_parent().get_parent().get_parent().battery_level = 100
