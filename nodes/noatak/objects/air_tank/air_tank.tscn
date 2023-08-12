@@ -30,9 +30,10 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="InteractionPoint" parent="airtank" instance=ExtResource("2_wn5lw")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3.01694, 0)
+metadata/type = "air"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="airtank"]
 transform = Transform3D(3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0, 6.11844, 1.75732)
-light_color = Color(0, 1, 0.14902, 1)
+light_color = Color(0, 0.796078, 0.854902, 1)
 omni_range = 3.0
 omni_attenuation = 4.0
