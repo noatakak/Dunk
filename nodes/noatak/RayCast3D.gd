@@ -14,9 +14,11 @@ func _process(_delta):
 			sum = 0
 			var coll = get_collider()
 			$prompt.visible = false
-			if coll.has_meta("destination"):
-				$prompt.visible = false
-			elif coll.has_meta("dialog_id"):
-				$prompt.visible = false
+			if coll.has_meta("type"):
+				if coll.get_meta("type") == "air":
+					coll.get_parent().get_parent().get_parent().o2_level += 50
+				if coll.get_meta("type") == "power":
+					coll.get_parent().get_parent().get_parent().battery_level = 100
+				coll.get_parent().get_parent().visible = false
 	else:
 		$prompt.visible = false

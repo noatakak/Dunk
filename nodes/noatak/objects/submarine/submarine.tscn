@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://8votp0shwnnp"]
+
+[ext_resource type="PackedScene" uid="uid://c2xdxw71jriu5" path="res://assets/models/submarine/submarine.glb" id="1_m4gus"]
+[ext_resource type="PackedScene" uid="uid://dtotbgo5f4ql8" path="res://nodes/noatak/interaction_point/interaction_point.tscn" id="2_mm688"]
+
+[node name="submarine" type="Node3D"]
+
+[node name="submarine" parent="." instance=ExtResource("1_m4gus")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="InteractionPoint" parent="submarine" instance=ExtResource("2_mm688")]
+transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.35632, 0)
+metadata/type = "sub"
