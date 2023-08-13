@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxpvcerjx8hm5"]
+
+[ext_resource type="PackedScene" uid="uid://bh7yt26rl1n2p" path="res://assets/models/dunleosteus/Dunkleosteus.glb" id="1_1sbt4"]
+
+[node name="Dunkleosteus" instance=ExtResource("1_1sbt4")]
+
+[node name="MULTIRESMESH" parent="." index="0"]
+skeleton = NodePath("../Armature/Skeleton3D")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0.700645, 0.0415209, -0.0408965, 0.711126)
+bones/1/rotation = Quaternion(0.0291322, -0.999344, 0.0215014, 0.00106767)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.0240682, -0.000170984, -0.0145768, 0.999604)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.000354007, 0.000215566, -0.0145759, 0.999894)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.000217429, 0.000243711, -0.014576, 0.999894)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-2.16352e-07, 0.995352, 0.096302, 6.95732e-06)
+bones/6/rotation = Quaternion(-0.36334, -0.52285, -0.48342, 0.600764)
+bones/7/rotation = Quaternion(-0.363337, 0.522852, 0.483422, 0.600762)
+bones/9/position = Vector3(5.60302e-06, 0.284216, -0.605086)
+bones/9/rotation = Quaternion(-7.97768e-08, 0.999997, -0.00253219, 4.07257e-05)
+bones/11/rotation = Quaternion(1.36731e-06, -0.998509, 0.0545892, 4.70928e-05)
+bones/12/rotation = Quaternion(-0.0132994, 1.36768e-05, -4.7787e-07, 0.999912)
+bones/13/rotation = Quaternion(-0.0100941, -1.55023e-05, -3.41928e-07, 0.999949)
+bones/14/rotation = Quaternion(-0.0257614, 2.44317e-07, -4.80331e-07, 0.999668)
+bones/15/rotation = Quaternion(-0.0226312, 9.52658e-07, -4.49775e-07, 0.999744)
+bones/16/rotation = Quaternion(-0.148667, -9.41867e-07, -2.95846e-06, 0.988887)
+bones/17/rotation = Quaternion(-0.726074, -0.314962, -0.30345, 0.530597)
+bones/18/rotation = Quaternion(-0.121888, -0.192024, 0.0262427, 0.973438)
+bones/19/rotation = Quaternion(-0.0954451, -0.169489, 0.0121889, 0.980824)
+bones/20/rotation = Quaternion(-0.040071, -0.0284785, 0.0465269, 0.997707)
+bones/21/rotation = Quaternion(-0.0532015, -0.103986, 0.144111, 0.982644)
+bones/22/rotation = Quaternion(-0.726062, 0.314983, 0.303479, 0.530585)
+bones/23/rotation = Quaternion(-0.121888, 0.192023, -0.0262428, 0.973438)
+bones/24/rotation = Quaternion(-0.0954451, 0.169489, -0.0121888, 0.980824)
+bones/25/rotation = Quaternion(-0.040071, 0.0284784, -0.0465269, 0.997707)
+bones/26/rotation = Quaternion(-0.0532015, 0.103987, -0.144111, 0.982644)
+bones/30/rotation = Quaternion(0.00453674, -0.000381754, -0.0822493, 0.996601)
+bones/31/rotation = Quaternion(-0.00704699, -0.000668533, -0.0411546, 0.999128)
+bones/32/rotation = Quaternion(0.00593966, 0.0325805, -0.0381187, 0.998724)
+bones/33/rotation = Quaternion(-0.014208, 0.0316098, 0.030434, 0.998936)
+bones/34/rotation = Quaternion(0.00338772, 0.0310687, 0.030986, 0.999031)
+bones/35/rotation = Quaternion(-0.0129279, 0.0315708, 0.0304745, 0.998953)
+bones/36/rotation = Quaternion(-0.00172018, 0.0312269, 0.0308267, 0.999035)
+bones/37/rotation = Quaternion(0.30473, 0.0473579, -0.0533642, 0.949763)
+bones/38/rotation = Quaternion(-0.101512, 0.0219973, -0.0678722, 0.992273)
+bones/39/rotation = Quaternion(-0.0980477, 0.0704979, 0.0163097, 0.992548)
+bones/40/rotation = Quaternion(-0.140577, 0.0711331, 0.0132675, 0.987422)
+bones/42/rotation = Quaternion(0.00702744, -8.88975e-05, -0.0411599, 0.999128)
+bones/43/rotation = Quaternion(-0.363018, 0.0182368, -0.511508, 0.778617)
+bones/44/rotation = Quaternion(0.00733039, 0.00653203, 0.0389987, 0.999191)
+bones/45/rotation = Quaternion(0.0390922, 0.0195534, 0.0910696, 0.994885)
+bones/46/rotation = Quaternion(0.00485612, 0.0520482, 0.184582, 0.981426)
+bones/47/rotation = Quaternion(-0.363018, -0.0182379, 0.511508, 0.778617)
+bones/48/rotation = Quaternion(0.00733031, -0.00653205, -0.0389988, 0.999191)
+bones/49/rotation = Quaternion(0.0390922, -0.0195534, -0.0910695, 0.994885)
+bones/50/rotation = Quaternion(0.00485613, -0.0520482, -0.184582, 0.981426)
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "Idle0"
