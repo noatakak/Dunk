@@ -42,7 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		anim.stop()
 
 func _physics_process(delta: float) -> void:
-	if mouse_captured: _handle_joypad_camera_rotation(delta)
+	#if mouse_captured: _handle_joypad_camera_rotation(delta)
 	velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 	if is_on_floor() && velocity != Vector3():
 		anim.play("headbob")

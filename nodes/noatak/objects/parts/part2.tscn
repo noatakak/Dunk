@@ -1,9 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://b33rn0queh1cq"]
+[gd_scene load_steps=4 format=3 uid="uid://b33rn0queh1cq"]
 
 [ext_resource type="PackedScene" uid="uid://c26hgr8udqk2k" path="res://assets/models/parts/part2.glb" id="1_7idg3"]
 [ext_resource type="PackedScene" uid="uid://dtotbgo5f4ql8" path="res://nodes/noatak/interaction_point/interaction_point.tscn" id="2_7awt5"]
 
+[sub_resource type="GDScript" id="GDScript_nhssw"]
+script/source = "extends Node3D
+
+var light
+var time_pass
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	light = get_node(\"part2/OmniLight3D\")
+	time_pass = 0
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	time_pass += delta
+	if time_pass > 1:
+		time_pass = 0
+		light.visible = !light.visible
+	if !visible:
+		queue_free()
+"
+
 [node name="part2" type="Node3D"]
+script = SubResource("GDScript_nhssw")
 
 [node name="part2" parent="." instance=ExtResource("1_7idg3")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.327735, 0.653151, 0)
