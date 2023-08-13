@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b33rn0queh1cq"]
+
+[ext_resource type="PackedScene" uid="uid://c26hgr8udqk2k" path="res://assets/models/parts/part2.glb" id="1_7idg3"]
+[ext_resource type="PackedScene" uid="uid://dtotbgo5f4ql8" path="res://nodes/noatak/interaction_point/interaction_point.tscn" id="2_7awt5"]
+
+[node name="part2" type="Node3D"]
+
+[node name="part2" parent="." instance=ExtResource("1_7idg3")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.327735, 0.653151, 0)
+
+[node name="InteractionPoint" parent="part2" instance=ExtResource("2_7awt5")]
+metadata/type = "part"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="part2/InteractionPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000939287, 2.85629, -2.161)
+light_color = Color(0.772549, 0, 0.00392157, 1)
+omni_range = 3.0
+omni_attenuation = 4.0

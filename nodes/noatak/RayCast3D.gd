@@ -16,17 +16,18 @@ func _process(_delta):
 			$prompt.visible = false
 			if coll.has_meta("type"):
 				if coll.get_meta("type") == "air":
-					coll.get_parent().get_parent().get_parent().get_node("audio_manager/air_refill").play()
-					coll.get_parent().get_parent().get_parent().o2_level += 50
+					coll.get_parent().get_parent().get_parent().get_parent().get_node("audio_manager/air_refill").play()
+					coll.get_parent().get_parent().get_parent().get_parent().o2_level += 50
 					coll.get_parent().get_parent().visible = false
 				if coll.get_meta("type") == "power":
-					coll.get_parent().get_parent().get_parent().battery_level = 100
+					coll.get_parent().get_parent().get_parent().get_parent().battery_level = 100
 					coll.get_parent().get_parent().visible = false
 				if coll.get_meta("type") == "part":
-					coll.get_parent().get_parent().get_parent().parts_level += 1
+					coll.get_parent().get_parent().get_parent().get_parent().parts_level += 1
 					coll.get_parent().get_parent().visible = false
-				if coll.get_meta("type") == "sub" and coll.get_parent().get_parent().get_parent().parts_level >= 5:
+				if coll.get_meta("type") == "sub" and coll.get_parent().get_parent().get_parent().get_parent().parts_level >= 5:
 					#win screen
+					print("win")
 					pass
 	else:
 		$prompt.visible = false

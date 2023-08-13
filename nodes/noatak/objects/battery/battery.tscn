@@ -22,7 +22,6 @@ func _process(delta):
 		light.visible = !light.visible
 	if !visible:
 		queue_free()
-		
 "
 
 [node name="battery" type="Node3D"]
