@@ -1,6 +1,54 @@
-[gd_scene format=3 uid="uid://dyv67iod1jbt0"]
+[gd_scene load_steps=2 format=3 uid="uid://dyv67iod1jbt0"]
+
+[sub_resource type="GDScript" id="GDScript_u0r6q"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	if ResourceLoader.load_threaded_get_status(\"res://level/game.tscn\") != 3:
+		$PanelContainer/ColorRect/MarginContainer/Narrative5/Button5.disabled = true
+	else:
+		$PanelContainer/ColorRect/MarginContainer/Narrative5/Button5.disabled = false
+
+func _on_button_1_pressed():
+	$PanelContainer/ColorRect/MarginContainer/Narrative1.visible = false
+	$PanelContainer/ColorRect/MarginContainer/Narrative2.visible = true
+
+
+func _on_button_2_pressed():
+	$PanelContainer/ColorRect/MarginContainer/Narrative2.visible = false
+	$PanelContainer/ColorRect/MarginContainer/Narrative3.visible = true
+
+
+func _on_button_3_pressed():
+	$PanelContainer/ColorRect/MarginContainer/Narrative3.visible = false
+	$PanelContainer/ColorRect/MarginContainer/Narrative4.visible = true
+
+
+func _on_button_4_pressed():
+	$PanelContainer/ColorRect/MarginContainer/Narrative4.visible = false
+	$PanelContainer/ColorRect/MarginContainer/Narrative5.visible = true
+
+
+func _on_button_5_pressed():
+	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(\"res://level/game.tscn\"))
+	$PanelContainer/ColorRect/MarginContainer/Narrative5.visible = false
+	visible = false
+	get_tree().paused = false
+	$PanelContainer/ColorRect/MarginContainer/Narrative1.visible = true
+"
 
 [node name="loading" type="Node2D"]
+process_mode = 2
+visible = false
+z_index = 2
+script = SubResource("GDScript_u0r6q")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -25,7 +73,6 @@ theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 
 [node name="Narrative1" type="VBoxContainer" parent="PanelContainer/ColorRect/MarginContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 1
 
@@ -39,7 +86,7 @@ large latch
 onto your sub.
 "
 
-[node name="Button" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative1"]
+[node name="Button1" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative1"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -60,7 +107,7 @@ the sub shakes
 and begans to
 fall deeper."
 
-[node name="Button" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative2"]
+[node name="Button2" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -81,7 +128,7 @@ realize you're
 only hope is to
 fix you're sub."
 
-[node name="Button" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative3"]
+[node name="Button3" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative3"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -102,7 +149,7 @@ pieces and get
 back to your
 sub to escape."
 
-[node name="Button" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative4"]
+[node name="Button4" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative4"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -110,6 +157,7 @@ theme_override_font_sizes/font_size = 5
 text = "contnue"
 
 [node name="Narrative5" type="VBoxContainer" parent="PanelContainer/ColorRect/MarginContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 1
 
@@ -122,9 +170,15 @@ to stay alive.
 The deep is
 full of danger.."
 
-[node name="Button" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative5"]
+[node name="Button5" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative5"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 5
 text = "Leave Sub"
+
+[connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative1/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative3/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative4/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative5/Button5" to="." method="_on_button_5_pressed"]

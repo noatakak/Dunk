@@ -19,6 +19,10 @@ boot_splash/use_filter=false
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=2000
 
+[autoload]
+
+Loading="*res://main/loading.tscn"
+
 [display]
 
 window/size/viewport_width=64
