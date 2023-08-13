@@ -22,6 +22,7 @@ boot_splash/minimum_display_time=2000
 [autoload]
 
 Loading="*res://main/loading.tscn"
+AudioManager="*res://nodes/noatak/audio_manager/audio_manager.tscn"
 
 [display]
 

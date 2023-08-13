@@ -1,0 +1,71 @@
+[gd_scene load_steps=17 format=3 uid="uid://diogc2v5vlw7v"]
+
+[ext_resource type="AudioStream" uid="uid://dgmtkpmqbfskn" path="res://assets/audio/air-refill.wav" id="1_7rajh"]
+[ext_resource type="AudioStream" uid="uid://cb6ur40672d61" path="res://assets/audio/ambient.wav" id="1_dayex"]
+[ext_resource type="Script" path="res://nodes/noatak/audio_manager/audio_manager.gd" id="1_yoh83"]
+[ext_resource type="AudioStream" uid="uid://cu4cwg5fqc0jc" path="res://assets/audio/alarm.wav" id="2_mhxqv"]
+[ext_resource type="AudioStream" uid="uid://cew6p3sx7y163" path="res://assets/audio/battery-insert.wav" id="4_d5fxg"]
+[ext_resource type="AudioStream" uid="uid://d4mschybq6cyx" path="res://assets/audio/light-switch.wav" id="6_xnl0g"]
+[ext_resource type="AudioStream" uid="uid://dcleplpn54xii" path="res://assets/audio/beep.wav" id="7_j1fm4"]
+[ext_resource type="AudioStream" uid="uid://h6a5twkhto4x" path="res://assets/audio/click.wav" id="7_l7gxp"]
+[ext_resource type="AudioStream" uid="uid://chc37hmbcmc7" path="res://assets/audio/crash.wav" id="8_fidto"]
+[ext_resource type="AudioStream" uid="uid://dka2bixichwix" path="res://assets/audio/crunch.wav" id="9_s0k5l"]
+[ext_resource type="AudioStream" uid="uid://cnpqvsgn0c4k2" path="res://assets/audio/death.wav" id="10_v14oh"]
+[ext_resource type="AudioStream" uid="uid://cfeoauacxyiru" path="res://assets/audio/footsteps.wav" id="11_2smh4"]
+[ext_resource type="AudioStream" uid="uid://d3sk5isjck88n" path="res://assets/audio/error.wav" id="11_bs0si"]
+[ext_resource type="AudioStream" uid="uid://hg6pymw77ryc" path="res://assets/audio/metal-sheet.wav" id="13_6khke"]
+[ext_resource type="AudioStream" uid="uid://fidu8n3clgo1" path="res://assets/audio/sonar.wav" id="14_t77h1"]
+[ext_resource type="AudioStream" uid="uid://brimpiblxeakk" path="res://assets/audio/splash.wav" id="15_doc34"]
+
+[node name="audio_manager" type="Node"]
+process_mode = 3
+script = ExtResource("1_yoh83")
+
+[node name="air-refill-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_7rajh")
+
+[node name="alarm-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mhxqv")
+volume_db = -10.0
+
+[node name="ambient-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_dayex")
+
+[node name="battery-insert-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_d5fxg")
+
+[node name="beep-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_j1fm4")
+
+[node name="click-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_l7gxp")
+
+[node name="crash-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_fidto")
+
+[node name="crunch-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_s0k5l")
+volume_db = -10.0
+
+[node name="death-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_v14oh")
+
+[node name="footstep-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_2smh4")
+pitch_scale = 0.86
+
+[node name="error-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_bs0si")
+
+[node name="light-switch-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xnl0g")
+
+[node name="metal_sheet_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_6khke")
+
+[node name="sonar-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_t77h1")
+volume_db = -5.0
+
+[node name="splash-player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_doc34")

@@ -17,31 +17,42 @@ func _process(_delta):
 		$PanelContainer/ColorRect/MarginContainer/Narrative5/Button5.disabled = false
 
 func _on_button_1_pressed():
+	AudioManager.play_click()
 	$PanelContainer/ColorRect/MarginContainer/Narrative1.visible = false
 	$PanelContainer/ColorRect/MarginContainer/Narrative2.visible = true
+	AudioManager.play_alarm()
 
 
 func _on_button_2_pressed():
+	AudioManager.stop_alarm()
+	AudioManager.play_click()
 	$PanelContainer/ColorRect/MarginContainer/Narrative2.visible = false
 	$PanelContainer/ColorRect/MarginContainer/Narrative3.visible = true
+	AudioManager.play_crash()
 
 
 func _on_button_3_pressed():
+	AudioManager.play_click()
 	$PanelContainer/ColorRect/MarginContainer/Narrative3.visible = false
 	$PanelContainer/ColorRect/MarginContainer/Narrative4.visible = true
+	AudioManager.play_crunch()
 
 
 func _on_button_4_pressed():
+	AudioManager.play_click()
 	$PanelContainer/ColorRect/MarginContainer/Narrative4.visible = false
 	$PanelContainer/ColorRect/MarginContainer/Narrative5.visible = true
+	AudioManager.play_air_refill()
 
 
 func _on_button_5_pressed():
+	AudioManager.play_click()
 	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(\"res://level/game.tscn\"))
 	$PanelContainer/ColorRect/MarginContainer/Narrative5.visible = false
 	visible = false
 	get_tree().paused = false
 	$PanelContainer/ColorRect/MarginContainer/Narrative1.visible = true
+	AudioManager.play_splash()
 "
 
 [node name="loading" type="Node2D"]
@@ -101,10 +112,10 @@ theme_override_constants/separation = 1
 [node name="Label" type="Label" parent="PanelContainer/ColorRect/MarginContainer/Narrative2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 5
-text = "Alarms began to
+text = "Alarms begin to
 sound loudly as
 the sub shakes
-and begans to
+and begins to
 fall deeper."
 
 [node name="Button2" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative2"]
@@ -124,9 +135,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 5
 text = "You hit rock
 bottom and
-realize you're
+realize your
 only hope is to
-fix you're sub."
+fix your sub."
 
 [node name="Button3" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative3"]
 layout_mode = 2
@@ -165,7 +176,7 @@ theme_override_constants/separation = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 5
 text = "Find o2 tanks
-and batteris
+and batteries
 to stay alive.
 The deep is
 full of danger.."

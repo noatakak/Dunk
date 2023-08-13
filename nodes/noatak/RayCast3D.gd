@@ -16,17 +16,20 @@ func _process(_delta):
 			$prompt.visible = false
 			if coll.has_meta("type"):
 				if coll.get_meta("type") == "air":
-					coll.get_parent().get_parent().get_parent().get_parent().get_node("audio_manager/air_refill").play()
+					AudioManager.play_air_refill()
 					coll.get_parent().get_parent().get_parent().get_parent().o2_level += 60
 					coll.get_parent().get_parent().visible = false
 				if coll.get_meta("type") == "power":
+					AudioManager.play_battery_insert()
 					coll.get_parent().get_parent().get_parent().get_parent().battery_level = 100
 					coll.get_parent().get_parent().visible = false
 				if coll.get_meta("type") == "part":
+					AudioManager.play_crunch()
 					coll.get_parent().get_parent().get_parent().get_parent().parts_level += 1
 					coll.get_parent().get_parent().visible = false
 				if coll.get_meta("type") == "sub" and coll.get_parent().get_parent().get_parent().get_parent().parts_level >= 5:
 					coll.get_parent().get_parent().get_parent().get_parent().win_display()
-					pass
-	else:
+				if coll.get_meta("type") == "sub" and coll.get_parent().get_parent().get_parent().get_parent().parts_level < 5:
+					AudioManager.play_crunch()
+	else:	
 		$prompt.visible = false

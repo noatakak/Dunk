@@ -1,5 +1,25 @@
 Code:
-	
+	First Person Controller Code Example: https://github.com/rbarongr/GodotFirstPersonController
 Sounds:
 	light-switch: https://freesound.org/people/Nicolas4677/sounds/446582/
 	air-refuel: https://freesound.org/people/davidou/sounds/88495/
+	footstep: https://freesound.org/people/InspectorJ/sounds/345560/
+	error: https://freesound.org/people/EilasSFX/sounds/653813/
+	click: https://freesound.org/people/waveplaySFX/sounds/399934/
+	groan: https://freesound.org/people/Under7dude/sounds/163440/
+	death: https://freesound.org/people/HerbertBoland/sounds/33637/
+	alarm: https://freesound.org/people/JSilverSound/sounds/381957/
+	sonar: https://freesound.org/people/Breviceps/sounds/493162/
+	ambient: https://freesound.org/people/nathanshadow/sounds/22453/
+	beep: https://freesound.org/people/MATRIXXX_/sounds/515823/
+	metal-sheet: https://freesound.org/people/pillonoise/sounds/353197/
+	splash: https://freesound.org/people/Kayyy/sounds/61015/
+	crash: https://freesound.org/people/sandyrb/sounds/95078/
+	battery-insert: https://freesound.org/people/philtre/sounds/78362/
+	crunch: https://freesound.org/people/Eneasz/sounds/161873/
+	dunk-target: https://freesound.org/people/Tritus/sounds/186899/
+	dunk-roar: https://freesound.org/people/Aetherspire/sounds/263471/
+	dunk-move: https://freesound.org/people/thatjeffcarter/sounds/165436/
+	dunk-speed: https://freesound.org/people/psiboy123/sounds/448460/
+Models:
+	Dunkleosteus: https://www.cgtrader.com/3d-models/animals/fish/dunkleosteus-animated-3dc8a3b2-15b0-46ae-9b8a-6e9b5e2a7f8a

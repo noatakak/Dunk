@@ -32,9 +32,11 @@ func _process(_delta):
 func check_for_flashlight_toggle():
 	if Input.is_action_just_pressed("toggle_flashlight"):
 		if battery_level > 0:
-			$"audio_manager/light_switch".play()
+			AudioManager.play_light_switch()
+			#$"audio_manager/light_switch".play()
 			flashlight.visible = !flashlight.visible
 		elif battery_level <= 0:
+			AudioManager.play_error()
 			playing_power_anim = true
 			battery_sprite.play("no_power")
 			await battery_sprite.animation_finished
@@ -71,15 +73,19 @@ func win_display():
 	get_tree().paused = true
 	$"Win Screen".visible = true
 	$'Player/player'.release_mouse()
+	AudioManager.play_sonar()
 
 func o2_death():
 	get_tree().paused = true
 	death_screen.visible = true
+	AudioManager.play_death()
 	$'Player/player'.release_mouse()
 
 func _on_button_pressed():
+	AudioManager.play_click()
 	get_tree().paused = false
 	death_screen.visible = false
+	AudioManager.stop_ambient()
 	get_tree().change_scene_to_file("res://main/main_menu.tscn")
 	
 func _unhandled_input(_event: InputEvent) -> void:
@@ -89,20 +95,25 @@ func _unhandled_input(_event: InputEvent) -> void:
 		$PauseMenu.visible = true
 
 func _on_resume_button_pressed():
+	AudioManager.play_click()
 	get_tree().paused = false
 	$'Player/player'.capture_mouse()
 	$PauseMenu.visible = false
 
 func _on_menu_button_pressed():
+	AudioManager.play_click()
 	get_tree().paused = false
 	death_screen.visible = false
+	AudioManager.stop_ambient()
 	get_tree().change_scene_to_file("res://main/main_menu.tscn")
 
 
 func _on_back_button_pressed():
+	AudioManager.play_click()
 	$PauseMenu/ControlsMarginContainer.visible = false
 	$PauseMenu/PauseMarginContainer.visible = true
 
 func _on_controls_button_pressed():
+	AudioManager.play_click()
 	$PauseMenu/PauseMarginContainer.visible = false
 	$PauseMenu/ControlsMarginContainer.visible = true
