@@ -17,8 +17,9 @@ extends Node
 var playing_power_anim
 
 func _ready():
-	battery_level = 100
+	battery_level = 0
 	o2_level = 25
+	parts_level = 0
 	alive = true
 	
 func _process(_delta):
