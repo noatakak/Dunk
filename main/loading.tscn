@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://dyv67iod1jbt0"]
+
+[node name="loading" type="Node2D"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+layout_mode = 2
+color = Color(0.0823529, 0.156863, 0.313726, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/ColorRect"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Narrative1" type="VBoxContainer" parent="PanelContainer/ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="PanelContainer/ColorRect/MarginContainer/Narrative1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "While exploring
+the ocean, you
+feel something
+large latch 
+onto your sub.
+"
+
+[node name="Button" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 5
+text = "contnue"
+
+[node name="Narrative2" type="VBoxContainer" parent="PanelContainer/ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="PanelContainer/ColorRect/MarginContainer/Narrative2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "Alarms began to
+sound loudly as
+the sub shakes
+and begans to
+fall deeper."
+
+[node name="Button" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 5
+text = "contnue"
+
+[node name="Narrative3" type="VBoxContainer" parent="PanelContainer/ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="PanelContainer/ColorRect/MarginContainer/Narrative3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "You hit rock
+bottom and
+realize you're
+only hope is to
+fix you're sub."
+
+[node name="Button" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 5
+text = "contnue"
+
+[node name="Narrative4" type="VBoxContainer" parent="PanelContainer/ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="PanelContainer/ColorRect/MarginContainer/Narrative4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "Collect the 5
+scatterd sub
+pieces and get
+back to your
+sub to escape."
+
+[node name="Button" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 5
+text = "contnue"
+
+[node name="Narrative5" type="VBoxContainer" parent="PanelContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="PanelContainer/ColorRect/MarginContainer/Narrative5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "Find o2 tanks
+and batteris
+to stay alive.
+The deep is
+full of danger.."
+
+[node name="Button" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative5"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 5
+text = "Leave Sub"

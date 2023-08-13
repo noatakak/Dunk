@@ -97,3 +97,12 @@ func _on_menu_button_pressed():
 	get_tree().paused = false
 	death_screen.visible = false
 	get_tree().change_scene_to_file("res://main/main_menu.tscn")
+
+
+func _on_back_button_pressed():
+	$PauseMenu/ControlsMarginContainer.visible = false
+	$PauseMenu/PauseMarginContainer.visible = true
+
+func _on_controls_button_pressed():
+	$PauseMenu/PauseMarginContainer.visible = false
+	$PauseMenu/ControlsMarginContainer.visible = true
