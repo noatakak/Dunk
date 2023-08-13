@@ -1,13 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://8votp0shwnnp"]
+[gd_scene load_steps=4 format=3 uid="uid://8votp0shwnnp"]
 
-[ext_resource type="PackedScene" uid="uid://c2xdxw71jriu5" path="res://assets/models/submarine/submarine.glb" id="1_m4gus"]
+[ext_resource type="PackedScene" uid="uid://bkaba8k560g2i" path="res://assets/models/submarine/new_sub.glb" id="1_va6e1"]
 [ext_resource type="PackedScene" uid="uid://dtotbgo5f4ql8" path="res://nodes/noatak/interaction_point/interaction_point.tscn" id="2_mm688"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2nrva"]
+radius = 1.53091
+height = 8.88486
 
 [node name="submarine" type="Node3D"]
 
-[node name="submarine" parent="." instance=ExtResource("1_m4gus")]
+[node name="new_sub" parent="." instance=ExtResource("1_va6e1")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="InteractionPoint" parent="submarine" instance=ExtResource("2_mm688")]
-transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.35632, 0)
+[node name="InteractionPoint" parent="new_sub" instance=ExtResource("2_mm688")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 4.395, 0, 1.2, 0)
 metadata/type = "sub"
+
+[node name="RigidBody3D" type="RigidBody3D" parent="new_sub"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.23308, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="new_sub/RigidBody3D"]
+shape = SubResource("CapsuleShape3D_2nrva")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="new_sub"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.6, 1.293, 1.24)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="new_sub"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.6, 1.293, 1.24)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="new_sub"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.293, 4.145)
