@@ -17,7 +17,7 @@ func _process(_delta):
 			if coll.has_meta("type"):
 				if coll.get_meta("type") == "air":
 					coll.get_parent().get_parent().get_parent().get_parent().get_node("audio_manager/air_refill").play()
-					coll.get_parent().get_parent().get_parent().get_parent().o2_level += 50
+					coll.get_parent().get_parent().get_parent().get_parent().o2_level += 60
 					coll.get_parent().get_parent().visible = false
 				if coll.get_meta("type") == "power":
 					coll.get_parent().get_parent().get_parent().get_parent().battery_level = 100
@@ -26,8 +26,7 @@ func _process(_delta):
 					coll.get_parent().get_parent().get_parent().get_parent().parts_level += 1
 					coll.get_parent().get_parent().visible = false
 				if coll.get_meta("type") == "sub" and coll.get_parent().get_parent().get_parent().get_parent().parts_level >= 5:
-					#win screen
-					print("win")
+					coll.get_parent().get_parent().get_parent().get_parent().win_display()
 					pass
 	else:
 		$prompt.visible = false

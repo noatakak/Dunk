@@ -26,6 +26,7 @@ func _process(_delta):
 	update_battery(_delta)
 	update_air(_delta)
 	check_for_flashlight_toggle()
+	parts_label.text = str(parts_level) + "/5"
 
 		
 func check_for_flashlight_toggle():
@@ -65,6 +66,11 @@ func update_air(delta):
 			alive = false
 			o2_death()
 	air_label.text = "AIR:\n" + str(int(o2_level))
+	
+func win_display():
+	get_tree().paused = true
+	$"Win Screen".visible = true
+	$'Player/player'.release_mouse()
 
 func o2_death():
 	get_tree().paused = true
@@ -72,6 +78,22 @@ func o2_death():
 	$'Player/player'.release_mouse()
 
 func _on_button_pressed():
+	get_tree().paused = false
+	death_screen.visible = false
+	get_tree().change_scene_to_file("res://main/main_menu.tscn")
+	
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("pause") and !death_screen.visible and !$PauseMenu.visible:
+		get_tree().paused = true
+		$'Player/player'.release_mouse()
+		$PauseMenu.visible = true
+
+func _on_resume_button_pressed():
+	get_tree().paused = false
+	$'Player/player'.capture_mouse()
+	$PauseMenu.visible = false
+
+func _on_menu_button_pressed():
 	get_tree().paused = false
 	death_screen.visible = false
 	get_tree().change_scene_to_file("res://main/main_menu.tscn")

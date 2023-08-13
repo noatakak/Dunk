@@ -29,14 +29,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		look_dir = event.relative * 0.001
 		if mouse_captured: _rotate_camera()
-	if Input.is_action_just_pressed("pause"):
-		#$Camera/RayCast3D/prompt.visible = false
-		#get_tree().paused = true
-		#PauseMenu.fullscreen = Game.fullscreen
-		#PauseMenu.volume = Game.volume_level
-		#PauseMenu.show()
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		get_tree().change_scene_to_file("res://main/main_menu.tscn")
+#	if Input.is_action_just_pressed("pause"):
+#		#$Camera/RayCast3D/prompt.visible = false
+#		#get_tree().paused = true
+#		#PauseMenu.fullscreen = Game.fullscreen
+#		#PauseMenu.volume = Game.volume_level
+#		#PauseMenu.show()
+#		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+#		get_tree().change_scene_to_file("res://main/main_menu.tscn")
 	if Input.is_action_just_pressed("jump"): 
 		jumping = true
 		anim.stop()
