@@ -50,9 +50,9 @@ func _process(_delta):
 	
 	set_timer_time()
 	if timer.is_stopped():
-		print("beep")
-		print("*")
 		AudioManager.play_beep()
+		$"viewport/proximityBeep".set_speed_scale(1/timer_time)
+		$"viewport/proximityBeep".play()
 		timer.start(timer_time)
 	
 
