@@ -3,12 +3,12 @@ extends RayCast3D
 var sum
 
 func _ready():
-	sum = 2
+	sum = 1
 
 func _process(_delta):
 	pass
 	sum += _delta
-	if is_colliding() and sum > 2:
+	if is_colliding() and sum > 1:
 		$prompt.visible = true
 		if Input.is_action_just_pressed("interact"):
 			sum = 0
