@@ -69,18 +69,26 @@ func set_speed_and_anim():
 		SPEED = 10
 	
 func set_new_velo(delta):
+	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
-	var direction = global_position.direction_to(next_location)
-	global_position += direction * delta * SPEED
+	var new_velocity = (next_location - current_location).normalized() * SPEED
 	
-	if state == "chase" and nav_agent.distance_to_target() < 30:
-		next_location = nav_agent.target_position
-	$"fish".position.y = (nav_agent.distance_to_target()/30) * 15 + 1
+	nav_agent.set_velocity(new_velocity)
 	
-	var target_direction = (next_location - global_transform.origin).normalized()
-	var current_direction = -global_transform.basis.z.normalized()
-	var new_direction = current_direction.lerp(target_direction, SPEED * delta)
-	look_at(global_transform.origin + new_direction)
+	
+	
+#	var next_location = nav_agent.get_next_path_position()
+#	var direction = global_position.direction_to(next_location)
+#	global_position += direction * delta * SPEED
+#
+#	if state == "chase" and nav_agent.distance_to_target() < 30:
+#		next_location = nav_agent.target_position
+#	$"fish".position.y = (nav_agent.distance_to_target()/30) * 15 + 1
+#
+#	var target_direction = (next_location - global_transform.origin).normalized()
+#	var current_direction = -global_transform.basis.z.normalized()
+#	var new_direction = current_direction.lerp(target_direction, SPEED * delta)
+#	look_at(global_transform.origin + new_direction)
 	
 #	if state == "chase" and nav_agent.distance_to_target() < 50:
 #		$"fish".look_at(global_transform.origin + new_direction)
@@ -98,3 +106,8 @@ func _on_timer_timeout():
 func _on_detection_zone_body_entered(body):
 	if state == "patrol" and body.name == "player":
 		state = "chase"
+
+
+func _on_navigation_agent_3d_velocity_computed(safe_velocity):
+	velocity = velocity.move_toward(safe_velocity, .25)
+	move_and_slide()
