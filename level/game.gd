@@ -9,12 +9,22 @@ extends Node
 @onready var battery_sprite = $"viewport/battery"
 @onready var death_screen = $"Death Screen"
 
+# objectives
+@onready var parts = $"part_container".get_children()
+
 @onready var battery_level
 @onready var o2_level
 @onready var parts_level
 @onready var alive
 
 var playing_power_anim
+# beep rhythms
+# 2: 100+ (default)
+@onready var timer_slowest_time = 2
+@onready var timer_fastest_time = .1
+var timer_time
+var timer_container
+var timer
 
 func _ready():
 	battery_level = 0
@@ -22,11 +32,45 @@ func _ready():
 	parts_level = 0
 	alive = true
 	
+	timer = Timer.new()
+	timer.one_shot = true
+	timer.autostart = true
+	set_timer_time()
+	timer.wait_time = timer_time
+	
+	timer_container = Node.new()
+	timer_container.add_child(timer)
+	add_child(timer_container)
+	
 func _process(_delta):
 	update_battery(_delta)
 	update_air(_delta)
 	check_for_flashlight_toggle()
 	parts_label.text = str(parts_level) + "/5"
+	
+	set_timer_time()
+	if timer.is_stopped():
+		print("beep")
+		print("*")
+		AudioManager.play_beep()
+		timer.start(timer_time)
+	
+
+# find the closest part
+# beep
+func set_timer_time():
+	var player_location = $"Player/player".global_position
+	
+	var min_distance = 100
+	for part in parts:
+		var distance_from_player = player_location.distance_to(part.global_position)
+		if distance_from_player < min_distance:
+			min_distance = distance_from_player
+		
+	if min_distance >= 100:
+		timer_time = timer_slowest_time
+	else:
+		timer_time = max(timer_slowest_time * (min_distance / 100), timer_fastest_time)
 
 		
 func check_for_flashlight_toggle():
