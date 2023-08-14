@@ -60,6 +60,7 @@ func _process(_delta):
 # beep
 func set_timer_time():
 	var player_location = $"Player/player".global_position
+	parts = $"part_container".get_children()
 	
 	var min_distance = 100
 	for part in parts:
