@@ -23,3 +23,5 @@ Sounds:
 	dunk-speed: https://freesound.org/people/psiboy123/sounds/448460/
 Models:
 	Dunkleosteus: https://www.cgtrader.com/3d-models/animals/fish/dunkleosteus-animated-3dc8a3b2-15b0-46ae-9b8a-6e9b5e2a7f8a
+Textures:
+	Sand: https://ambientcg.com/view?id=Ground060
