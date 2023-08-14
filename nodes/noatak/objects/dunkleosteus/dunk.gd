@@ -31,6 +31,7 @@ func adjust_height():
 func check_if_reached():
 	if nav_agent.distance_to_target() < 1 or nav_agent.target_position == Vector3(0, 0, 0):
 		state = "patrol"
+		$"fish".position.y = 15
 		var new_patrol = patrol_points.duplicate()
 		new_patrol.sort()
 		new_patrol.erase(0)
@@ -44,12 +45,12 @@ func set_speed_and_anim():
 		SPEED = 0
 	if state == "patrol":
 		if SPEED != 3:
-			$fish/Dunkleosteus/AnimationPlayer.play("Swim0")
+			$"fish/Dunkleosteus/AnimationPlayer".play("Swim0")
 		SPEED = 3
 	if state == "chase":
 		if SPEED != 8:
 			$"fish/audio_container/target".play()
-			$fish/Dunkleosteus/AnimationPlayer.play("Speed1")
+			$"fish/Dunkleosteus/AnimationPlayer".play("Speed1")
 		update_target_location(player_loc)
 		SPEED = 8
 	if state == "flee":
@@ -62,9 +63,9 @@ func set_speed_and_anim():
 					max_distance = distance_from_dunk
 					new_target = point.global_position
 			update_target_location(new_target)
-			$fish/Dunkleosteus/AnimationPlayer.play("constraint")
-			await $fish/Dunkleosteus/AnimationPlayer.animation_finished
-			$fish/Dunkleosteus/AnimationPlayer.play("Speed1")
+			$"fish/Dunkleosteus/AnimationPlayer".play("constraint")
+			await $"fish/Dunkleosteus/AnimationPlayer".animation_finished
+			$"fish/Dunkleosteus/AnimationPlayer".play("Speed1")
 		SPEED = 10
 	
 func set_new_velo(delta):
@@ -72,10 +73,17 @@ func set_new_velo(delta):
 	var direction = global_position.direction_to(next_location)
 	global_position += direction * delta * SPEED
 	
+	if state == "chase" and nav_agent.distance_to_target() < 30:
+		next_location = nav_agent.target_position
+		$"fish".position.y = (nav_agent.distance_to_target()/30) * 15
+	
 	var target_direction = (next_location - global_transform.origin).normalized()
 	var current_direction = -global_transform.basis.z.normalized()
 	var new_direction = current_direction.lerp(target_direction, SPEED * delta)
 	look_at(global_transform.origin + new_direction)
+	
+#	if state == "chase" and nav_agent.distance_to_target() < 50:
+#		$"fish".look_at(global_transform.origin + new_direction)
 
 func get_navigation_points(player, patrols):
 	player_loc = player
