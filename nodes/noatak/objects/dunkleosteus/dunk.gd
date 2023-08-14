@@ -75,7 +75,7 @@ func set_new_velo(delta):
 	
 	if state == "chase" and nav_agent.distance_to_target() < 30:
 		next_location = nav_agent.target_position
-		$"fish".position.y = (nav_agent.distance_to_target()/30) * 15 + 1
+	$"fish".position.y = (nav_agent.distance_to_target()/30) * 15 + 1
 	
 	var target_direction = (next_location - global_transform.origin).normalized()
 	var current_direction = -global_transform.basis.z.normalized()
@@ -98,4 +98,3 @@ func _on_timer_timeout():
 func _on_detection_zone_body_entered(body):
 	if state == "patrol" and body.name == "player":
 		state = "chase"
-	print(body)

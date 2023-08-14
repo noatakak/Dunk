@@ -11,6 +11,7 @@ script/source = "extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	AudioManager.play_ambient()
+	get_tree().paused = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,6 +20,7 @@ func _process(_delta):
 
 
 func _on_play_button_pressed():
+	print(\"click play\")
 	AudioManager.play_click()
 	Loading.visible = true
 	ResourceLoader.load_threaded_request(\"res://level/game.tscn\")
@@ -28,17 +30,20 @@ func _on_play_button_pressed():
 
 
 func _on_controls_button_pressed():
+	AudioManager.play_click()
 	$\"MainMarginContainer\".visible = false
 	$\"ExitButton\".visible = false	
 	$\"ControlsMarginContainer\".visible = true
 	
 
 func _on_back_button_pressed():
+	AudioManager.play_click()
 	$\"ControlsMarginContainer\".visible = false
 	$\"MainMarginContainer\".visible = true
 	$\"ExitButton\".visible = true
 
 func _on_texture_button_pressed():
+	AudioManager.play_click()
 	get_tree().quit()
 "
 
