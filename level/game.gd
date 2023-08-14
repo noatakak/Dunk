@@ -111,7 +111,7 @@ func update_air(delta):
 		o2_level = 0
 		if alive:
 			alive = false
-			o2_death()
+			death()
 	air_label.text = "AIR:\n" + str(int(o2_level))
 	
 func win_display():
@@ -120,7 +120,7 @@ func win_display():
 	$'Player/player'.release_mouse()
 	AudioManager.play_sonar()
 
-func o2_death():
+func death():
 	get_tree().paused = true
 	death_screen.visible = true
 	AudioManager.play_death()
