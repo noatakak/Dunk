@@ -28,6 +28,7 @@ func _process(_delta):
 				if coll.get_meta("type") == "part":
 					AudioManager.play_crunch()
 					coll.get_parent().get_parent().get_parent().get_parent().parts_level += 1
+					coll.get_parent().get_parent().get_parent().get_parent().parts = $"part_container".get_children()					
 					coll.get_parent().get_parent().visible = false
 				if coll.get_meta("type") == "sub" and coll.get_parent().get_parent().get_parent().get_parent().parts_level >= 5:
 					coll.get_parent().get_parent().get_parent().get_parent().win_display()
