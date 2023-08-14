@@ -14,6 +14,8 @@ extends CharacterBody3D
 var player_loc
 var patrol_points
 
+@onready var attack = false
+
 func _physics_process(delta):
 	if ai:
 		$"NavigationAgent3D".PROCESS_MODE_INHERIT
@@ -21,12 +23,10 @@ func _physics_process(delta):
 		$"NavigationAgent3D".PROCESS_MODE_DISABLED
 	if start:
 		check_if_reached()
-		adjust_height()
 		set_speed_and_anim()
 		set_new_velo(delta)
-		
-func adjust_height():
-	pass
+	if state == "chase" and nav_agent.distance_to_target() < 7:
+		$"fish/Dunkleosteus/AnimationPlayer".play("Bite0")
 	
 func check_if_reached():
 	if nav_agent.distance_to_target() < 1 or nav_agent.target_position == Vector3(0, 0, 0):
@@ -58,10 +58,10 @@ func set_speed_and_anim():
 			var max_distance = 1
 			var new_target
 			for point in patrol_points:
-				var distance_from_dunk = global_position.distance_to(point.global_position)
+				var distance_from_dunk = global_position.distance_to(point)
 				if distance_from_dunk > max_distance:
 					max_distance = distance_from_dunk
-					new_target = point.global_position
+					new_target = point
 			update_target_location(new_target)
 			$"fish/Dunkleosteus/AnimationPlayer".play("constraint")
 			await $"fish/Dunkleosteus/AnimationPlayer".animation_finished
@@ -75,7 +75,7 @@ func set_new_velo(delta):
 	
 	if state == "chase" and nav_agent.distance_to_target() < 30:
 		next_location = nav_agent.target_position
-		$"fish".position.y = (nav_agent.distance_to_target()/30) * 15
+		$"fish".position.y = (nav_agent.distance_to_target()/30) * 15 + 1
 	
 	var target_direction = (next_location - global_transform.origin).normalized()
 	var current_direction = -global_transform.basis.z.normalized()

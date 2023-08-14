@@ -3,6 +3,8 @@ extends Node
 @export var battery_speed: int = 10
 @export var air_speed: float = .5
 
+@onready var player = $Player/player
+
 @onready var flashlight = $"Player/player/Camera/SpotLight3D"
 @onready var air_label = $"viewport/oxygen"
 @onready var parts_label = $"viewport/parts"
@@ -55,6 +57,15 @@ func _process(_delta):
 		$"viewport/proximityBeep".play()
 		timer.start(timer_time)
 	
+	if flashlight.visible and $"Player/player/Camera/SpotLight3D/light-ray".is_colliding() and $"Player/player/Camera/SpotLight3D/light-ray".get_collider().name == "fish":
+		$"dunk_container/dunk".state = "flee"
+		
+func _physics_process(_delta):
+	var list = $"path_container".get_children().map(func(part): return part.global_transform.origin) + $"part_container".get_children().map(func(part): return part.global_transform.origin)
+	get_tree().call_group("dunk", "get_navigation_points", player.global_transform.origin, list)
+	if $"dunk_container/dunk".global_position.distance_to(player.global_position) < 2:
+		death()
+	
 
 # find the closest part
 # beep
@@ -78,7 +89,6 @@ func check_for_flashlight_toggle():
 	if Input.is_action_just_pressed("toggle_flashlight"):
 		if battery_level > 0:
 			AudioManager.play_light_switch()
-			#$"audio_manager/light_switch".play()
 			flashlight.visible = !flashlight.visible
 		elif battery_level <= 0:
 			AudioManager.play_error()
