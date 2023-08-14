@@ -22,11 +22,12 @@ extends Node
 var playing_power_anim
 # beep rhythms
 # 2: 100+ (default)
-@onready var timer_slowest_time = 2
-@onready var timer_fastest_time = .1
+@onready var timer_slowest_time: float = 2
+@onready var timer_fastest_time: float = .1
 var timer_time
 var timer_container
 var timer
+var animation_speed
 
 func _ready():
 	battery_level = 0
@@ -53,7 +54,7 @@ func _process(_delta):
 	set_timer_time()
 	if timer.is_stopped():
 		AudioManager.play_beep()
-		$"viewport/proximityBeep".set_speed_scale(1/timer_time)
+		$"viewport/proximityBeep".set_speed_scale(animation_speed)
 		$"viewport/proximityBeep".play()
 		timer.start(timer_time)
 	
@@ -83,6 +84,12 @@ func set_timer_time():
 		timer_time = timer_slowest_time
 	else:
 		timer_time = max(timer_slowest_time * (min_distance / 100), timer_fastest_time)
+		
+	if timer_time > 0:
+		animation_speed = 1/timer_time
+	else:
+		print("timer time is 0")
+		animation_speed = .5
 
 		
 func check_for_flashlight_toggle():
