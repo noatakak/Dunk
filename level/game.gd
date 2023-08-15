@@ -63,7 +63,7 @@ func _process(_delta):
 		$"dunk_container/dunk".state = "flee"
 		
 func _physics_process(_delta):
-	var list = $"path_container".get_children().map(func(part): return part.global_transform.origin) + $"part_container".get_children().map(func(part): return part.global_transform.origin)
+	var list = $"path_container".get_children().map(func(part): return part.global_transform.origin)
 	get_tree().call_group("dunk", "get_navigation_points", player.global_transform.origin, list)
 	if $"dunk_container/dunk".global_position.distance_to(player.global_position) < 2:
 		death()

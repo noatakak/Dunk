@@ -73,7 +73,7 @@ func set_new_velo(delta):
 	var target_rotation = get_global_transform().looking_at(next_location, Vector3.UP).basis.get_euler()
 	
 	if global_position.distance_to(player_loc) < 30:
-		$"fish".position.y = (nav_agent.distance_to_target()/30) * 15 + 1
+		$"fish".position.y = (nav_agent.distance_to_target()/30) * 14 + 1
 		
 	rotation.y = lerp(rotation.y, target_rotation.y, delta * SPEED/10)
 
