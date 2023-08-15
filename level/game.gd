@@ -30,6 +30,7 @@ var timer
 var animation_speed
 
 func _ready():
+	CursorManager.visible = false
 	battery_level = 0
 	o2_level = 25
 	parts_level = 0
@@ -138,12 +139,14 @@ func update_air(delta):
 	air_label.text = "AIR:\n" + str(int(o2_level))
 	
 func win_display():
+	CursorManager.visible = true
 	get_tree().paused = true
 	$"Win Screen".visible = true
 	$'Player/player'.release_mouse()
 	AudioManager.play_sonar()
 
 func death():
+	CursorManager.visible = true
 	get_tree().paused = true
 	death_screen.visible = true
 	AudioManager.play_death()
@@ -161,8 +164,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 		get_tree().paused = true
 		$'Player/player'.release_mouse()
 		$PauseMenu.visible = true
+		CursorManager.visible = true
 
 func _on_resume_button_pressed():
+	CursorManager.visible = false
 	AudioManager.play_click()
 	get_tree().paused = false
 	$'Player/player'.capture_mouse()
