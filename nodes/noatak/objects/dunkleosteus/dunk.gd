@@ -71,12 +71,10 @@ func set_new_velo(delta):
 	
 	var target_rotation = get_global_transform().looking_at(next_location, Vector3.UP).basis.get_euler()
 	
-	if state == "chase" and nav_agent.distance_to_target() < 30:
-		next_location = nav_agent.target_position
+	if global_position.distance_to(player_loc) < 30:
 		$"fish".position.y = (nav_agent.distance_to_target()/30) * 15 + 1
-		#target_rotation = get_global_transform().looking_at(nav_agent.target_position, Vector3.UP).basis.get_euler()
 		
-	rotation_degrees.y = lerp_angle(rotation_degrees.y, rad_to_deg(target_rotation.y), delta * SPEED)
+	rotation.y = lerp(rotation.y, target_rotation.y, delta * SPEED/10)
 
 func get_navigation_points(player, patrols):
 	player_loc = player
