@@ -37,5 +37,6 @@ metadata/type = "power"
 [node name="OmniLight3D" type="OmniLight3D" parent="battery"]
 transform = Transform3D(3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, -0.725886, 4.52826, 0.821915)
 light_color = Color(0, 1, 0.14902, 1)
+light_energy = 16.0
 omni_range = 3.0
 omni_attenuation = 4.0
