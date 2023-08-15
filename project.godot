@@ -30,6 +30,7 @@ CursorManager="*res://nodes/noatak/cursor_manager/cursor_manager.tscn"
 window/size/viewport_width=64
 window/size/viewport_height=64
 window/size/mode=3
+window/size/borderless=true
 window/size/window_width_override=900
 window/size/window_height_override=900
 window/stretch/mode="viewport"
@@ -88,7 +89,8 @@ interact={
 
 [navigation]
 
-3d/default_cell_size=4.0
+3d/default_cell_size=2.0
+3d/default_cell_height=10.0
 
 [rendering]
 

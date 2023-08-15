@@ -58,14 +58,13 @@ func _process(_delta):
 		$"viewport/proximityBeep".set_speed_scale(animation_speed)
 		$"viewport/proximityBeep".play()
 		timer.start(timer_time)
-	
 	if flashlight.visible and $"Player/player/Camera/SpotLight3D/light-ray".is_colliding() and $"Player/player/Camera/SpotLight3D/light-ray".get_collider().name == "fish":
 		$"dunk_container/dunk".state = "flee"
 		
 func _physics_process(_delta):
 	var list = $"path_container".get_children().map(func(part): return part.global_transform.origin)
 	get_tree().call_group("dunk", "get_navigation_points", player.global_transform.origin, list)
-	if $"dunk_container/dunk".global_position.distance_to(player.global_position) < 2:
+	if $"dunk_container/dunk/fish".global_position.distance_to(player.global_position) < 2.5:
 		death()
 	
 
@@ -146,6 +145,9 @@ func win_display():
 	AudioManager.play_sonar()
 
 func death():
+	if $"dunk_container/dunk/fish".global_position.distance_to(player.global_position) < 2.5:
+		$Player/player/Camera.look_at($"dunk_container/dunk/fish".global_position)
+	await get_tree().process_frame
 	CursorManager.visible = true
 	get_tree().paused = true
 	death_screen.visible = true

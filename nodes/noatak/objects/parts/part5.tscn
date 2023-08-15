@@ -38,5 +38,5 @@ omni_range = 3.0
 omni_attenuation = 4.0
 
 [node name="InteractionPoint" parent="part5" instance=ExtResource("2_dpod3")]
-transform = Transform3D(2.655, 0, 0, 0, 2.685, 0, 0, 0, 3.56, 0, 1.23, 0)
+transform = Transform3D(3.23, 0, 0, 0, 3.125, 0, 0, 0, 4.21, 0, 1.23, 0)
 metadata/type = "part"

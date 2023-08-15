@@ -30,7 +30,8 @@ func _process(_delta):
 					coll.get_parent().get_parent().get_parent().get_parent().parts_level += 1
 					coll.get_parent().get_parent().visible = false
 					coll.get_parent().get_parent().get_parent().get_parent().get_node("dunk_container").get_node("dunk").state = "chase"
-					coll.get_parent().get_parent().get_parent().get_parent().get_node("dunk_container").get_node("dunk").get_node("fish").get_node("detection_zone").get_node("shape").shape.radius += 5
+					var radius = coll.get_parent().get_parent().get_parent().get_parent().get_node("dunk_container").get_node("dunk").get_node("fish").get_node("detection_zone").get_node("shape").shape.get_radius() + 5
+					coll.get_parent().get_parent().get_parent().get_parent().get_node("dunk_container").get_node("dunk").get_node("fish").get_node("detection_zone").get_node("shape").shape.set_radius(radius)
 				if coll.get_meta("type") == "sub" and coll.get_parent().get_parent().get_parent().get_parent().parts_level >= 5:
 					coll.get_parent().get_parent().get_parent().get_parent().win_display()
 				if coll.get_meta("type") == "sub" and coll.get_parent().get_parent().get_parent().get_parent().parts_level < 5:

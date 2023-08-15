@@ -31,7 +31,7 @@ script = SubResource("GDScript_nhssw")
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.327735, 0.653151, 0)
 
 [node name="InteractionPoint" parent="part2" instance=ExtResource("2_7awt5")]
-transform = Transform3D(3.095, 0, 0, 0, 2.895, 0, 0, 0, 2.71, 0, 0, 0)
+transform = Transform3D(3.555, 0, 0, 0, 3.68, 0, 0, 0, 3.35, 0, 0, 0)
 metadata/type = "part"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="part2"]
