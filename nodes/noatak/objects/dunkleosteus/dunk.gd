@@ -23,7 +23,8 @@ func _physics_process(delta):
 		$"fish/Dunkleosteus/AnimationPlayer".play("Bite0")
 	
 func check_if_reached():
-	if nav_agent.distance_to_target() < 1 or nav_agent.target_position == Vector3(0, 0, 0):
+	if nav_agent.distance_to_target() < 2 or nav_agent.target_position == Vector3(0, 0, 0):
+		print("picking new target")
 		state = "patrol"
 		$"fish".position.y = 15
 		var new_patrol = patrol_points.duplicate()
@@ -48,7 +49,7 @@ func set_speed_and_anim():
 		update_target_location(player_loc)
 		SPEED = 8
 	if state == "flee":
-		if SPEED != 10:
+		if SPEED != 6:
 			var max_distance = 1
 			var new_target
 			for point in patrol_points:
@@ -60,7 +61,7 @@ func set_speed_and_anim():
 			$"fish/Dunkleosteus/AnimationPlayer".play("constraint")
 			await $"fish/Dunkleosteus/AnimationPlayer".animation_finished
 			$"fish/Dunkleosteus/AnimationPlayer".play("Speed1")
-		SPEED = 10
+		SPEED = 6
 	
 func set_new_velo(delta):
 	var current_location = global_transform.origin

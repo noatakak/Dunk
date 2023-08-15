@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv7t34xakbl1e"]
+
+[ext_resource type="Texture2D" uid="uid://p85haxkytj2d" path="res://assets/ui/arrow.png" id="1_pckcn"]
+[ext_resource type="Script" path="res://nodes/noatak/cursor_manager/cursor_manager.gd" id="1_wh8t1"]
+[ext_resource type="Texture2D" uid="uid://3illd0dvxx8f" path="res://assets/ui/empty-arrow.png" id="2_s6wdv"]
+
+[node name="CursorManager" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+script = ExtResource("1_wh8t1")
+empty_cursor = ExtResource("2_s6wdv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pckcn")
+centered = false

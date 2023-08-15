@@ -126,9 +126,15 @@ func update_air(delta):
 	o2_level -= delta * air_speed
 	if o2_level < 0:
 		o2_level = 0
+		$fade.visible = true
+		$"fade/animation".play("fade")
+		await $"fade/animation".animation_finished
 		if alive:
 			alive = false
 			death()
+	if o2_level > 0:
+		$"fade/animation".stop()
+		$"fade".visible = false
 	air_label.text = "AIR:\n" + str(int(o2_level))
 	
 func win_display():

@@ -23,6 +23,7 @@ boot_splash/minimum_display_time=2000
 
 Loading="*res://main/loading.tscn"
 AudioManager="*res://nodes/noatak/audio_manager/audio_manager.tscn"
+CursorManager="*res://nodes/noatak/cursor_manager/cursor_manager.tscn"
 
 [display]
 
@@ -31,6 +32,7 @@ window/size/viewport_height=64
 window/size/window_width_override=900
 window/size/window_height_override=900
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://assets/ui/arrow.png"
 
 [editor_plugins]
 
