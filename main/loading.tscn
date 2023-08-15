@@ -41,6 +41,12 @@ func _on_button_3_pressed():
 func _on_button_4_pressed():
 	AudioManager.play_click()
 	$PanelContainer/ColorRect/MarginContainer/Narrative4.visible = false
+	$PanelContainer/ColorRect/MarginContainer/Narrative4_5.visible = true
+	AudioManager.play_beep()
+	
+func _on_button_4_5_pressed():
+	AudioManager.play_click()
+	$PanelContainer/ColorRect/MarginContainer/Narrative4_5.visible = false
 	$PanelContainer/ColorRect/MarginContainer/Narrative5.visible = true
 	AudioManager.play_air_refill()
 
@@ -53,6 +59,9 @@ func _on_button_5_pressed():
 	get_tree().paused = false
 	$PanelContainer/ColorRect/MarginContainer/Narrative1.visible = true
 	AudioManager.play_splash()
+
+
+
 "
 
 [node name="loading" type="Node2D"]
@@ -187,8 +196,30 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 5
 text = "Leave Sub"
 
+[node name="Narrative4_5" type="VBoxContainer" parent="PanelContainer/ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/ColorRect/MarginContainer/Narrative4_5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 5
+text = "Use your red
+proximity
+sensor to find
+the scattered
+sub pieces."
+
+[node name="Button4_5" type="Button" parent="PanelContainer/ColorRect/MarginContainer/Narrative4_5"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 5
+text = "continue"
+
 [connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative1/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative2/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative3/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative4/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative5/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="PanelContainer/ColorRect/MarginContainer/Narrative4_5/Button4_5" to="." method="_on_button_4_5_pressed"]

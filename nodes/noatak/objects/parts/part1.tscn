@@ -37,5 +37,6 @@ metadata/type = "part"
 [node name="OmniLight3D" type="OmniLight3D" parent="part1"]
 transform = Transform3D(3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 0.0746549, 6.05917, 1.24797)
 light_color = Color(0.772549, 0, 0.00392157, 1)
+light_energy = 16.0
 omni_range = 3.0
 omni_attenuation = 4.0
