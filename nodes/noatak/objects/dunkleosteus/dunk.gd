@@ -9,23 +9,17 @@ extends CharacterBody3D
 # options: patrol, chase, flee, idle
 @onready var state = "patrol"
 
-@export var ai: bool = true
-
 var player_loc
 var patrol_points
 
 @onready var attack = false
 
 func _physics_process(delta):
-	if ai:
-		$"NavigationAgent3D".PROCESS_MODE_INHERIT
-	else:
-		$"NavigationAgent3D".PROCESS_MODE_DISABLED
 	if start:
 		check_if_reached()
 		set_speed_and_anim()
 		set_new_velo(delta)
-	if state == "chase" and nav_agent.distance_to_target() < 7:
+	if state == "chase" and nav_agent.distance_to_target() < 6:
 		$"fish/Dunkleosteus/AnimationPlayer".play("Bite0")
 	
 func check_if_reached():
@@ -75,23 +69,14 @@ func set_new_velo(delta):
 	
 	nav_agent.set_velocity(new_velocity)
 	
+	var target_rotation = get_global_transform().looking_at(next_location, Vector3.UP).basis.get_euler()
 	
-	
-#	var next_location = nav_agent.get_next_path_position()
-#	var direction = global_position.direction_to(next_location)
-#	global_position += direction * delta * SPEED
-#
-#	if state == "chase" and nav_agent.distance_to_target() < 30:
-#		next_location = nav_agent.target_position
-#	$"fish".position.y = (nav_agent.distance_to_target()/30) * 15 + 1
-#
-#	var target_direction = (next_location - global_transform.origin).normalized()
-#	var current_direction = -global_transform.basis.z.normalized()
-#	var new_direction = current_direction.lerp(target_direction, SPEED * delta)
-#	look_at(global_transform.origin + new_direction)
-	
-#	if state == "chase" and nav_agent.distance_to_target() < 50:
-#		$"fish".look_at(global_transform.origin + new_direction)
+	if state == "chase" and nav_agent.distance_to_target() < 30:
+		next_location = nav_agent.target_position
+		$"fish".position.y = (nav_agent.distance_to_target()/30) * 15 + 1
+		#target_rotation = get_global_transform().looking_at(nav_agent.target_position, Vector3.UP).basis.get_euler()
+		
+	rotation_degrees.y = lerp_angle(rotation_degrees.y, rad_to_deg(target_rotation.y), delta * SPEED)
 
 func get_navigation_points(player, patrols):
 	player_loc = player
