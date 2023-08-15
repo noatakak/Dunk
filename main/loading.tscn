@@ -71,7 +71,7 @@ grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer"]
 layout_mode = 2
-color = Color(0.0823529, 0.156863, 0.313726, 1)
+color = Color(0.0352941, 0.0352941, 0.482353, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/ColorRect"]
 layout_mode = 0
